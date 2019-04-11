@@ -63,6 +63,26 @@ namespace Major_Project___Inspire_Further_Research.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _15DegOar {
+            get {
+                object obj = ResourceManager.GetObject("15DegOar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CropRock {
+            get {
+                object obj = ResourceManager.GetObject("CropRock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Oar {
             get {
                 object obj = ResourceManager.GetObject("Oar", resourceCulture);
