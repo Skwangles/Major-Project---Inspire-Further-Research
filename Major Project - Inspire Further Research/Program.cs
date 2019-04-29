@@ -16,7 +16,7 @@ namespace Major_Project___Inspire_Further_Research
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Opening());
         }
     }
 }
