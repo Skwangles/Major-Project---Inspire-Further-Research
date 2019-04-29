@@ -14,6 +14,12 @@ namespace Major_Project___Inspire_Further_Research
     {
         Opening Open = new Opening();
         Random rand = new Random();
+        int x;
+        int y;
+        bool LeftK;
+        bool RightK;
+        bool Up;
+        bool Down;
         int i = 0;
         int neg = -20;
         int distance;
@@ -31,20 +37,20 @@ namespace Major_Project___Inspire_Further_Research
             string Hardness = Open.Hardness;
             switch (Hardness)
             {
-                case"1": //Based on difficulty. Changes rock speed
+                case "1": //Based on difficulty. Changes rock speed
                     RockS = 4;
                     WakaS = 4;
                     distance = 100;
                     break;
-                case"2":
+                case "2":
                     RockS = 6;
                     WakaS = 4;
                     distance = 250;
                     break;
-                case"3":
+                case "3":
                     RockS = 8;
                     WakaS = 4;
-                    distance = 200;
+                    distance = 350;
                     break;
                 default:
                     break;
@@ -54,29 +60,129 @@ namespace Major_Project___Inspire_Further_Research
         }
 
         private void Reset()
-        {
+        { //resests game.
 
             Life1.Image = oars.Images[0];
             Life2.Image = oars.Images[0];
             Life3.Image = oars.Images[0];
             Waka.Top = Border.Height - Waka.Height;
-            Rock1.Top = neg - Rock1.Height;
-            Rock2.Top = neg - Rock2.Height;
-            Rock3.Top = neg - Rock3.Height;
-            SuperBigRock.Top = neg - SuperBigRock.Height;
-            BigRock.Top = neg - BigRock.Height;
-            SmallRock.Top = neg - SmallRock.Height;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock1.Top = y;
+            Rock1.Left = x;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock2.Top = y;
+            Rock2.Left = x;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock3.Top = y;
+            Rock3.Left = x;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock4.Top = y;
+            Rock4.Left = x;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock5.Top = y;
+            Rock5.Left = x;
+            Rando(0, Border.Width, -(Border.Width), 0);
+            Rock6.Top = y;
+            Rock6.Left = x;
         }
 
         private void Run()
         {
-
+            MoveTimer.Start();
         }
 
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
-            CheckCollision();
+            Bound();
+            MoveWaka();
+            RockMove();
+            CheckCollision(); //checks collision
         }
+         
+        private void Bound()
+        {
+            if (Rock1.Top > Border.Height)
+            {
+                Rando(0,Border.Width,-(Border.Width),0);
+                Rock1.Top = y;
+                Rock1.Left = x;
+            }
+            if (Rock2.Top > Border.Height)
+            {
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock2.Top = y;
+                Rock2.Left = x;
+            }
+            if (Rock3.Top > Border.Height)
+            {
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock3.Top = y;
+                Rock3.Left = x;
+            }
+            if (Rock4.Top > Border.Height)
+            {
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock4.Top = y;
+                Rock4.Left = x;
+            }
+            if (Rock5.Top > Border.Height)
+            {
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock5.Top = y;
+                Rock5.Left = x;
+            }
+            if (Rock6.Top > Border.Height)
+            {
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock6.Top = y;
+                Rock6.Left = x;
+            }
+            if (Waka.Left < 0) Waka.Left = 0;
+            if (Waka.Left > Border.Width) Waka.Left = Border.Width;
+            if (Waka.Top < 0) Waka.Top = 0;
+            if (Waka.Top > Border.Height) Waka.Top = Border.Height;
+        }
+        
+        private void Rando(int lx, int rx, int ly, int ry)
+        {
+            x = rand.Next(lx, rx); //Gets a random poistion for each rock above the screen. in an area equal to the size of play area.
+            y = rand.Next(ly, ry);
+        }
+
+
+        private void RockMove()
+        {
+            Rock1.Top += RockS;
+            Rock2.Top += RockS;
+            Rock3.Top += RockS;
+            Rock4.Top += RockS;
+            Rock5.Top += RockS;
+            Rock6.Top += RockS;
+
+        }
+
+
+        private void MoveWaka()
+        {
+            if (LeftK && RightK)
+            { }
+            else
+            {
+                if (LeftK) Waka.Left -= WakaS;
+                if (RightK) Waka.Left += WakaS;
+            }
+
+            if (Up && Down)
+            { }
+            else
+            {
+                if (Up) Waka.Top -= WakaS;
+                if (Down) Waka.Top += WakaS;
+            }
+
+
+        }
+
 
         private void CheckCollision()
         {
@@ -84,38 +190,12 @@ namespace Major_Project___Inspire_Further_Research
 
         }
 
-        private void Collided()
+        private void Collided() //the sub which uses the process that is involved with a rock collision
         {
             Waka.Top += 5;
             LifeLost();
-            switch (Which)
-            {
-                case "1":
-                    Rock1.Top = neg;
-
-                    break;
-                case "2":
-
-                    Rock2.Top = neg;
-
-                    break;
-                case "3":
-                    Rock3.Top = neg;
-                    break;
-                case "S":
-                    SmallRock.Top = neg;
-                    break;
-                case "B":
-                    BigRock.Top = neg;
-                    break;
-                case "G":
-                    SuperBigRock.Top = neg;
-                    break;
-                default:
-                    break;
-            }
             Collide = false;
-            Which = "";
+
         }
 
         private void RockCol() // Checks each rock. And Minus' a life and removes the rocks, then moves waka back 10.
@@ -123,37 +203,49 @@ namespace Major_Project___Inspire_Further_Research
             if (Waka.Left >= Rock1.Left && Waka.Left <= (Rock1.Left + Rock1.Width) && Rock1.Top + Rock1.Height >= Waka.Top && Rock1.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "1";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock1.Top = y;
+                Rock1.Left = x;
                 Collided();
             } // rock 1
             if (Waka.Left >= Rock2.Left && Waka.Left <= (Rock2.Left + Rock2.Width) && Rock2.Top + Rock2.Height >= Waka.Top && Rock2.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "2";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock2.Top = y;
+                Rock2.Left = x;
                 Collided();
             } // Rock 2
-            if (Waka.Left >= SmallRock.Left && Waka.Left <= (SmallRock.Left + SmallRock.Width) && SmallRock.Top + SmallRock.Height >= Waka.Top && SmallRock.Top <= Waka.Top)
+            if (Waka.Left >= Rock4.Left && Waka.Left <= (Rock4.Left + Rock4.Width) && Rock4.Top + Rock4.Height >= Waka.Top && Rock4.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "S";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock4.Top = y;
+                Rock4.Left = x;
                 Collided();
             } //Rock Smallrock
             if (Waka.Left >= Rock3.Left && Waka.Left <= (Rock3.Left + Rock3.Width) && Rock3.Top + Rock3.Height >= Waka.Top && Rock3.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "3";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock3.Top = y;
+                Rock3.Left = x;
                 Collided();
             } //Rock 3
-            if (Waka.Left >= BigRock.Left && Waka.Left <= (BigRock.Left + BigRock.Width) && BigRock.Top + BigRock.Height >= Waka.Top && BigRock.Top <= Waka.Top)
+            if (Waka.Left >= Rock5.Left && Waka.Left <= (Rock5.Left + Rock5.Width) && Rock5.Top + Rock5.Height >= Waka.Top && Rock5.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "B";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock5.Top = y;
+                Rock5.Left = x;
                 Collided();
             } // BigRcok
-            if (Waka.Left >= SuperBigRock.Left && Waka.Left <= (SuperBigRock.Left + SuperBigRock.Width) && SuperBigRock.Top + SuperBigRock.Height >= Waka.Top && SuperBigRock.Top <= Waka.Top)
+            if (Waka.Left >= Rock6.Left && Waka.Left <= (Rock6.Left + Rock6.Width) && Rock6.Top + Rock6.Height >= Waka.Top && Rock6.Top <= Waka.Top)
             {
                 Collide = true;
-                Which = "G";
+                Rando(0, Border.Width, -(Border.Width), 0);
+                Rock6.Top = y;
+                Rock6.Left = x;
                 Collided();
             } //Super Big Rock
         }
@@ -177,14 +269,50 @@ namespace Major_Project___Inspire_Further_Research
                     break;
                 default:
                     break;
-
-
-
-
             }
         }
 
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
 
+            switch (e.KeyValue)
+            {
+                case (char)Keys.Left:
+                    LeftK = true;
+                    break;
+                case (char)Keys.Right:
+                    RightK = true;
+                    break;
+                case (char)Keys.Up:
+                    Up = true;
+                    break;
+                case (char)Keys.Down:
+                    Down = true;
+                    break;
+                default:
+                    break;
+            }
+        }
 
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyValue)
+            {
+                case (char)Keys.Left:
+                    LeftK = false;
+                    break;
+                case (char)Keys.Right:
+                    RightK = false;
+                    break;
+                case (char)Keys.Up:
+                    Up = false;
+                    break;
+                case (char)Keys.Down:
+                    Down = false;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

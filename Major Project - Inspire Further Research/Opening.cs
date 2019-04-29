@@ -12,7 +12,7 @@ namespace Major_Project___Inspire_Further_Research
 {
     public partial class Opening : Form
     {
-        Form New = new Form1();
+        Form1 New = new Form1(); //error
         public string Hardness;
         public Opening()
         {

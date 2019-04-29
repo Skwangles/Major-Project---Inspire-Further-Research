@@ -36,12 +36,12 @@
             this.oars = new System.Windows.Forms.ImageList(this.components);
             this.Life1 = new System.Windows.Forms.PictureBox();
             this.Waka = new System.Windows.Forms.PictureBox();
-            this.SuperBigRock = new System.Windows.Forms.PictureBox();
+            this.Rock6 = new System.Windows.Forms.PictureBox();
             this.Rock2 = new System.Windows.Forms.PictureBox();
             this.Rock3 = new System.Windows.Forms.PictureBox();
             this.Rock1 = new System.Windows.Forms.PictureBox();
-            this.SmallRock = new System.Windows.Forms.PictureBox();
-            this.BigRock = new System.Windows.Forms.PictureBox();
+            this.Rock4 = new System.Windows.Forms.PictureBox();
+            this.Rock5 = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Life2 = new System.Windows.Forms.PictureBox();
             this.Life3 = new System.Windows.Forms.PictureBox();
@@ -50,12 +50,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Waka)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SuperBigRock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SmallRock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BigRock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life3)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.Border.BackColor = System.Drawing.Color.Transparent;
             this.Border.Location = new System.Drawing.Point(-2, -1);
             this.Border.Name = "Border";
-            this.Border.Size = new System.Drawing.Size(447, 548);
+            this.Border.Size = new System.Drawing.Size(447, 529);
             this.Border.TabIndex = 0;
             this.Border.TabStop = false;
             // 
@@ -117,16 +117,16 @@
             this.Waka.TabIndex = 6;
             this.Waka.TabStop = false;
             // 
-            // SuperBigRock
+            // Rock6
             // 
-            this.SuperBigRock.BackColor = System.Drawing.Color.Transparent;
-            this.SuperBigRock.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
-            this.SuperBigRock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SuperBigRock.Location = new System.Drawing.Point(46, 107);
-            this.SuperBigRock.Name = "SuperBigRock";
-            this.SuperBigRock.Size = new System.Drawing.Size(100, 61);
-            this.SuperBigRock.TabIndex = 7;
-            this.SuperBigRock.TabStop = false;
+            this.Rock6.BackColor = System.Drawing.Color.Transparent;
+            this.Rock6.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
+            this.Rock6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Rock6.Location = new System.Drawing.Point(46, 107);
+            this.Rock6.Name = "Rock6";
+            this.Rock6.Size = new System.Drawing.Size(100, 61);
+            this.Rock6.TabIndex = 7;
+            this.Rock6.TabStop = false;
             // 
             // Rock2
             // 
@@ -161,27 +161,27 @@
             this.Rock1.TabIndex = 10;
             this.Rock1.TabStop = false;
             // 
-            // SmallRock
+            // Rock4
             // 
-            this.SmallRock.BackColor = System.Drawing.Color.Transparent;
-            this.SmallRock.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
-            this.SmallRock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SmallRock.Location = new System.Drawing.Point(77, 252);
-            this.SmallRock.Name = "SmallRock";
-            this.SmallRock.Size = new System.Drawing.Size(34, 26);
-            this.SmallRock.TabIndex = 11;
-            this.SmallRock.TabStop = false;
+            this.Rock4.BackColor = System.Drawing.Color.Transparent;
+            this.Rock4.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
+            this.Rock4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Rock4.Location = new System.Drawing.Point(77, 252);
+            this.Rock4.Name = "Rock4";
+            this.Rock4.Size = new System.Drawing.Size(34, 26);
+            this.Rock4.TabIndex = 11;
+            this.Rock4.TabStop = false;
             // 
-            // BigRock
+            // Rock5
             // 
-            this.BigRock.BackColor = System.Drawing.Color.Transparent;
-            this.BigRock.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
-            this.BigRock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BigRock.Location = new System.Drawing.Point(272, 186);
-            this.BigRock.Name = "BigRock";
-            this.BigRock.Size = new System.Drawing.Size(73, 53);
-            this.BigRock.TabIndex = 12;
-            this.BigRock.TabStop = false;
+            this.Rock5.BackColor = System.Drawing.Color.Transparent;
+            this.Rock5.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.CropRock;
+            this.Rock5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Rock5.Location = new System.Drawing.Point(272, 186);
+            this.Rock5.Name = "Rock5";
+            this.Rock5.Size = new System.Drawing.Size(73, 53);
+            this.Rock5.TabIndex = 12;
+            this.Rock5.TabStop = false;
             // 
             // progressBar1
             // 
@@ -227,12 +227,12 @@
             this.Controls.Add(this.Life3);
             this.Controls.Add(this.Life2);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.BigRock);
-            this.Controls.Add(this.SmallRock);
+            this.Controls.Add(this.Rock5);
+            this.Controls.Add(this.Rock4);
             this.Controls.Add(this.Rock1);
             this.Controls.Add(this.Rock3);
             this.Controls.Add(this.Rock2);
-            this.Controls.Add(this.SuperBigRock);
+            this.Controls.Add(this.Rock6);
             this.Controls.Add(this.Waka);
             this.Controls.Add(this.Life1);
             this.Controls.Add(this.label1);
@@ -242,16 +242,18 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.Border)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Waka)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SuperBigRock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SmallRock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BigRock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Rock5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life3)).EndInit();
             this.ResumeLayout(false);
@@ -267,12 +269,12 @@
         private System.Windows.Forms.ImageList oars;
         private System.Windows.Forms.PictureBox Life1;
         private System.Windows.Forms.PictureBox Waka;
-        private System.Windows.Forms.PictureBox SuperBigRock;
+        private System.Windows.Forms.PictureBox Rock6;
         private System.Windows.Forms.PictureBox Rock2;
         private System.Windows.Forms.PictureBox Rock3;
         private System.Windows.Forms.PictureBox Rock1;
-        private System.Windows.Forms.PictureBox SmallRock;
-        private System.Windows.Forms.PictureBox BigRock;
+        private System.Windows.Forms.PictureBox Rock4;
+        private System.Windows.Forms.PictureBox Rock5;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox Life2;
         private System.Windows.Forms.PictureBox Life3;
