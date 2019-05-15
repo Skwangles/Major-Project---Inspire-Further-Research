@@ -42,10 +42,11 @@
             this.Rock1 = new System.Windows.Forms.PictureBox();
             this.Rock4 = new System.Windows.Forms.PictureBox();
             this.Rock5 = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.DistanceMeter = new System.Windows.Forms.ProgressBar();
             this.Life2 = new System.Windows.Forms.PictureBox();
             this.Life3 = new System.Windows.Forms.PictureBox();
             this.MoveTimer = new System.Windows.Forms.Timer(this.components);
+            this.OOLlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
@@ -100,7 +101,7 @@
             this.Life1.BackColor = System.Drawing.Color.Beige;
             this.Life1.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources._15DegOar;
             this.Life1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Life1.Location = new System.Drawing.Point(451, 71);
+            this.Life1.Location = new System.Drawing.Point(451, 65);
             this.Life1.Name = "Life1";
             this.Life1.Size = new System.Drawing.Size(29, 103);
             this.Life1.TabIndex = 3;
@@ -182,21 +183,22 @@
             this.Rock5.Size = new System.Drawing.Size(73, 53);
             this.Rock5.TabIndex = 12;
             this.Rock5.TabStop = false;
+            this.Rock5.Click += new System.EventHandler(this.Rock5_Click);
             // 
-            // progressBar1
+            // DistanceMeter
             // 
-            this.progressBar1.Location = new System.Drawing.Point(-2, 524);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(492, 23);
-            this.progressBar1.TabIndex = 13;
+            this.DistanceMeter.Location = new System.Drawing.Point(-2, 524);
+            this.DistanceMeter.Margin = new System.Windows.Forms.Padding(0);
+            this.DistanceMeter.Name = "DistanceMeter";
+            this.DistanceMeter.Size = new System.Drawing.Size(492, 23);
+            this.DistanceMeter.TabIndex = 13;
             // 
             // Life2
             // 
             this.Life2.BackColor = System.Drawing.Color.Beige;
             this.Life2.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources._15DegOar;
             this.Life2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Life2.Location = new System.Drawing.Point(451, 204);
+            this.Life2.Location = new System.Drawing.Point(451, 228);
             this.Life2.Name = "Life2";
             this.Life2.Size = new System.Drawing.Size(29, 103);
             this.Life2.TabIndex = 14;
@@ -207,7 +209,7 @@
             this.Life3.BackColor = System.Drawing.Color.Beige;
             this.Life3.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources._15DegOar;
             this.Life3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Life3.Location = new System.Drawing.Point(451, 356);
+            this.Life3.Location = new System.Drawing.Point(451, 390);
             this.Life3.Name = "Life3";
             this.Life3.Size = new System.Drawing.Size(29, 103);
             this.Life3.TabIndex = 15;
@@ -217,6 +219,17 @@
             // 
             this.MoveTimer.Tick += new System.EventHandler(this.MoveTimer_Tick);
             // 
+            // OOLlbl
+            // 
+            this.OOLlbl.AutoSize = true;
+            this.OOLlbl.BackColor = System.Drawing.Color.Silver;
+            this.OOLlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OOLlbl.Location = new System.Drawing.Point(12, 9);
+            this.OOLlbl.Name = "OOLlbl";
+            this.OOLlbl.Size = new System.Drawing.Size(390, 78);
+            this.OOLlbl.TabIndex = 16;
+            this.OOLlbl.Text = "Your Waka Sank, \r\nToo many rock collisions";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,19 +237,20 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(484, 540);
-            this.Controls.Add(this.Life3);
-            this.Controls.Add(this.Life2);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.Rock5);
-            this.Controls.Add(this.Rock4);
-            this.Controls.Add(this.Rock1);
-            this.Controls.Add(this.Rock3);
-            this.Controls.Add(this.Rock2);
-            this.Controls.Add(this.Rock6);
-            this.Controls.Add(this.Waka);
-            this.Controls.Add(this.Life1);
+            this.Controls.Add(this.OOLlbl);
+            this.Controls.Add(this.DistanceMeter);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.Life1);
+            this.Controls.Add(this.Life2);
+            this.Controls.Add(this.Life3);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.Waka);
+            this.Controls.Add(this.Rock5);
+            this.Controls.Add(this.Rock1);
+            this.Controls.Add(this.Rock2);
+            this.Controls.Add(this.Rock4);
+            this.Controls.Add(this.Rock6);
+            this.Controls.Add(this.Rock3);
             this.Controls.Add(this.Border);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
@@ -275,10 +289,11 @@
         private System.Windows.Forms.PictureBox Rock1;
         private System.Windows.Forms.PictureBox Rock4;
         private System.Windows.Forms.PictureBox Rock5;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar DistanceMeter;
         private System.Windows.Forms.PictureBox Life2;
         private System.Windows.Forms.PictureBox Life3;
         private System.Windows.Forms.Timer MoveTimer;
+        private System.Windows.Forms.Label OOLlbl;
     }
 }
 

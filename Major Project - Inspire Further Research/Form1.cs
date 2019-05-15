@@ -12,7 +12,7 @@ namespace Major_Project___Inspire_Further_Research
 {
     public partial class Form1 : Form
     {
-        Opening Open = new Opening();
+        string CurrentDir = System.IO.Directory.GetCurrentDirectory() + @"\Photos\";
         Random rand = new Random();
         int x;
         int y;
@@ -20,21 +20,33 @@ namespace Major_Project___Inspire_Further_Research
         bool RightK;
         bool Up;
         bool Down;
-        int i = 0;
-        int neg = -20;
+        int i = 0;       
         int distance;
         bool Collide = false;
         string Which = "";
         int RockS;
         int WakaS;
+      
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void AddImg()
+        {
+         
+            oars.Images.Add(Image.FromFile(CurrentDir + @"15DegOar.png"));
+            oars.Images.Add(Image.FromFile(CurrentDir + @"BrokenOarFlip.png"));
+           
+        }
+
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            string Hardness = Open.Hardness;
+            string Hardness = Opening.Hardness;
+            AddImg();
             switch (Hardness)
             {
                 case "1": //Based on difficulty. Changes rock speed
@@ -61,10 +73,11 @@ namespace Major_Project___Inspire_Further_Research
 
         private void Reset()
         { //resests game.
-
-            Life1.Image = oars.Images[0];
-            Life2.Image = oars.Images[0];
-            Life3.Image = oars.Images[0];
+            OOLlbl.Hide();
+            DistanceMeter.Maximum = distance;
+            Life1.BackgroundImage = oars.Images[0];
+            Life2.BackgroundImage = oars.Images[0];
+            Life3.BackgroundImage = oars.Images[0];
             Waka.Top = Border.Height - Waka.Height;
             Rando(0, Border.Width, -(Border.Width), 0);
             Rock1.Top = y;
@@ -200,7 +213,7 @@ namespace Major_Project___Inspire_Further_Research
 
         private void RockCol() // Checks each rock. And Minus' a life and removes the rocks, then moves waka back 10.
         {
-            if (Waka.Left >= Rock1.Left && Waka.Left <= (Rock1.Left + Rock1.Width) && Rock1.Top + Rock1.Height >= Waka.Top && Rock1.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock1.Left && Waka.Left <= (Rock1.Left + Rock1.Width) && Rock1.Top + Rock1.Height >= Waka.Top && Rock1.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -208,7 +221,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock1.Left = x;
                 Collided();
             } // rock 1
-            if (Waka.Left >= Rock2.Left && Waka.Left <= (Rock2.Left + Rock2.Width) && Rock2.Top + Rock2.Height >= Waka.Top && Rock2.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock2.Left && Waka.Left <= (Rock2.Left + Rock4.Width) && Rock2.Top + Rock2.Height >= Waka.Top && Rock2.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -216,7 +229,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock2.Left = x;
                 Collided();
             } // Rock 2
-            if (Waka.Left >= Rock4.Left && Waka.Left <= (Rock4.Left + Rock4.Width) && Rock4.Top + Rock4.Height >= Waka.Top && Rock4.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock4.Left && Waka.Left <= (Rock4.Left + Rock4.Width) && Rock4.Top + Rock4.Height >= Waka.Top && Rock4.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -224,7 +237,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock4.Left = x;
                 Collided();
             } //Rock Smallrock
-            if (Waka.Left >= Rock3.Left && Waka.Left <= (Rock3.Left + Rock3.Width) && Rock3.Top + Rock3.Height >= Waka.Top && Rock3.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock3.Left && Waka.Left <= (Rock3.Left + Rock3.Width) && Rock3.Top + Rock3.Height >= Waka.Top && Rock3.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -232,7 +245,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock3.Left = x;
                 Collided();
             } //Rock 3
-            if (Waka.Left >= Rock5.Left && Waka.Left <= (Rock5.Left + Rock5.Width) && Rock5.Top + Rock5.Height >= Waka.Top && Rock5.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock5.Left && Waka.Left <= (Rock5.Left + Rock5.Width) && Rock5.Top + Rock5.Height >= Waka.Top && Rock5.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -240,7 +253,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock5.Left = x;
                 Collided();
             } // BigRcok
-            if (Waka.Left >= Rock6.Left && Waka.Left <= (Rock6.Left + Rock6.Width) && Rock6.Top + Rock6.Height >= Waka.Top && Rock6.Top <= Waka.Top)
+            if (Waka.Left + Waka.Width >= Rock6.Left && Waka.Left <= (Rock6.Left + Rock6.Width) && Rock6.Top + Rock6.Height >= Waka.Top && Rock6.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -256,19 +269,25 @@ namespace Major_Project___Inspire_Further_Research
             switch (i)
             {
                 case 1:
-                    Life3.Image = oars.Images[1];
+                    Life3.BackgroundImage = oars.Images[1];
 
                     break;
                 case 2:
-                    Life2.Image = oars.Images[1];
+                    Life2.BackgroundImage = oars.Images[1];
 
                     break;
                 case 3:
-                    Life1.Image = oars.Images[1];
+                    Life1.BackgroundImage = oars.Images[1];
 
                     break;
                 default:
                     break;
+            }
+            if (i >= 3)
+            {
+                MoveTimer.Stop();
+                OOLlbl.Text = "Your Waka Sank " + Environment.NewLine + "Too Many Rock Collisions";
+                OOLlbl.Show();
             }
         }
 
@@ -313,6 +332,11 @@ namespace Major_Project___Inspire_Further_Research
                 default:
                     break;
             }
+        }
+
+        private void Rock5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

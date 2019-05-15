@@ -73,6 +73,7 @@
             this.Controls.Add(this.Normal);
             this.Name = "Opening";
             this.Text = "Opening";
+            this.Load += new System.EventHandler(this.Opening_Load);
             this.ResumeLayout(false);
 
         }
