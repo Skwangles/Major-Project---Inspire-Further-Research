@@ -33,7 +33,6 @@
             this.Border = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.oars = new System.Windows.Forms.ImageList(this.components);
             this.Life1 = new System.Windows.Forms.PictureBox();
             this.Waka = new System.Windows.Forms.PictureBox();
             this.Rock6 = new System.Windows.Forms.PictureBox();
@@ -47,6 +46,7 @@
             this.Life3 = new System.Windows.Forms.PictureBox();
             this.MoveTimer = new System.Windows.Forms.Timer(this.components);
             this.OOLlbl = new System.Windows.Forms.Label();
+            this.oars = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Border)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
@@ -88,13 +88,6 @@
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Lives";
-            // 
-            // oars
-            // 
-            this.oars.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("oars.ImageStream")));
-            this.oars.TransparentColor = System.Drawing.Color.Transparent;
-            this.oars.Images.SetKeyName(0, "15DegOar.png");
-            this.oars.Images.SetKeyName(1, "BrokenOarFlip.png");
             // 
             // Life1
             // 
@@ -226,9 +219,16 @@
             this.OOLlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OOLlbl.Location = new System.Drawing.Point(12, 9);
             this.OOLlbl.Name = "OOLlbl";
-            this.OOLlbl.Size = new System.Drawing.Size(390, 78);
+            this.OOLlbl.Size = new System.Drawing.Size(280, 78);
             this.OOLlbl.TabIndex = 16;
-            this.OOLlbl.Text = "Your Waka Sank, \r\nToo many rock collisions";
+            this.OOLlbl.Text = "Your Waka Sank,\r\nAll Oars broke.";
+            // 
+            // oars
+            // 
+            this.oars.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("oars.ImageStream")));
+            this.oars.TransparentColor = System.Drawing.Color.Transparent;
+            this.oars.Images.SetKeyName(0, "15DegOar.png");
+            this.oars.Images.SetKeyName(1, "BrokenOarFlip.png");
             // 
             // Form1
             // 
@@ -280,7 +280,6 @@
         private System.Windows.Forms.PictureBox Border;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ImageList oars;
         private System.Windows.Forms.PictureBox Life1;
         private System.Windows.Forms.PictureBox Waka;
         private System.Windows.Forms.PictureBox Rock6;
@@ -294,6 +293,7 @@
         private System.Windows.Forms.PictureBox Life3;
         private System.Windows.Forms.Timer MoveTimer;
         private System.Windows.Forms.Label OOLlbl;
+        private System.Windows.Forms.ImageList oars;
     }
 }
 
