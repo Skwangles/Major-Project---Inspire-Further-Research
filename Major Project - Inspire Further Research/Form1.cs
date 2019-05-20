@@ -65,7 +65,7 @@ namespace Major_Project___Inspire_Further_Research
         }
 
         private void Reset()
-        { //resests game.
+        { //resets game. For another play
             OOLlbl.Hide();
             DistanceMeter.Maximum = distance;
             Life1.BackgroundImage = UnBrokenOar;
@@ -92,16 +92,16 @@ namespace Major_Project___Inspire_Further_Research
             Rock6.Left = x;
         }
 
-        private void Run()
+        private void Run() //starts game, timer
         {
             MoveTimer.Start();
         }
 
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
-            Bound();
-            MoveWaka();
-            RockMove();
+            Bound(); //Makes sure all objects are in bounds
+            MoveWaka(); //Moves Waka
+            RockMove();//Moves rocks.
             CheckCollision(); //checks collision
         }
          
@@ -198,7 +198,7 @@ namespace Major_Project___Inspire_Further_Research
 
         private void Collided() //the sub which uses the process that is involved with a rock collision
         {
-            Waka.Top += 5;
+            Waka.Top += 20;
             LifeLost();
             Collide = false;
 
