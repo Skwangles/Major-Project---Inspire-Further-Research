@@ -12,7 +12,7 @@ namespace Major_Project___Inspire_Further_Research
 {
     public partial class Form1 : Form
     {
-        string CurrentDir = System.IO.Directory.GetCurrentDirectory() + @"Photos\";
+       
         Random rand = new Random();
         int x;
         int y;
@@ -22,12 +22,13 @@ namespace Major_Project___Inspire_Further_Research
         bool Down;
         int i = 0;       
         int distance;
+        int totaldistance;
         bool Collide = false;
         string Which = "";
         int RockS;
         int WakaS;
         Bitmap UnBrokenOar = (Bitmap)Properties.Resources._15DegOar;
-        Bitmap SnappedOar = (Bitmap)Properties.Resources.Oar;
+        Bitmap SnappedOar = (Bitmap)Properties.Resources.BrokenOarFlip;
 
     
     public Form1()
@@ -45,21 +46,25 @@ namespace Major_Project___Inspire_Further_Research
                 case "1": //Based on difficulty. Changes rock speed
                     RockS = 4;
                     WakaS = 4;
-                    distance = 100;
+                    
+                    totaldistance = 10000;
                     break;
                 case "2":
                     RockS = 6;
-                    WakaS = 4;
-                    distance = 250;
+                    WakaS = 6;
+                   
+                    totaldistance = 15000;
                     break;
                 case "3":
                     RockS = 8;
-                    WakaS = 4;
-                    distance = 350;
+                    WakaS = 8;
+                   
+                    totaldistance= 20000;
                     break;
                 default:
                     break;
             }
+            progressBar1.Maximum = totaldistance;
             Reset();
             Run();
         }
@@ -67,29 +72,29 @@ namespace Major_Project___Inspire_Further_Research
         private void Reset()
         { //resets game. For another play
             OOLlbl.Hide();
-            DistanceMeter.Maximum = distance;
+            progressBar1.Value = 0;
             Life1.BackgroundImage = UnBrokenOar;
             Life2.BackgroundImage = UnBrokenOar;
             Life3.BackgroundImage = UnBrokenOar;
             Waka.Top = Border.Height - Waka.Height;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock1.Top = y;
-            Rock1.Left = x;
+            Rock1pb.Top = y;
+            Rock1pb.Left = x;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock2.Top = y;
-            Rock2.Left = x;
+            Rock2pb.Top = y;
+            Rock2pb.Left = x;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock3.Top = y;
-            Rock3.Left = x;
+            Rock3pb.Top = y;
+            Rock3pb.Left = x;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock4.Top = y;
-            Rock4.Left = x;
+            Rock4pb.Top = y;
+            Rock4pb.Left = x;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock5.Top = y;
-            Rock5.Left = x;
+            Rock5pb.Top = y;
+            Rock5pb.Left = x;
             Rando(0, Border.Width, -(Border.Width), 0);
-            Rock6.Top = y;
-            Rock6.Left = x;
+            Rock6pb.Top = y;
+            Rock6pb.Left = x;
         }
 
         private void Run() //starts game, timer
@@ -99,54 +104,66 @@ namespace Major_Project___Inspire_Further_Research
 
         private void MoveTimer_Tick(object sender, EventArgs e)
         {
+            distance += 10;
             Bound(); //Makes sure all objects are in bounds
             MoveWaka(); //Moves Waka
             RockMove();//Moves rocks.
             CheckCollision(); //checks collision
+            
+            
+            if (distance > totaldistance)
+            {
+                MoveTimer.Stop();
+                OOLlbl.Text = "The voyage to New Zealand" + Environment.NewLine + " is complete.";
+                OOLlbl.Show();
+                distance = 0;
+            }
+            progressBar1.Value = distance;
+
         }
          
         private void Bound()
-        {
-            if (Rock1.Top > Border.Height)
+        {            
+            if (Rock1pb.Top > Border.Height)
             {
                 Rando(0,Border.Width,-(Border.Width),0);
-                Rock1.Top = y;
-                Rock1.Left = x;
+                Rock1pb.Top = y;
+                Rock1pb.Left = x;
             }
-            if (Rock2.Top > Border.Height)
+            if (Rock2pb.Top > Border.Height)
             {
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock2.Top = y;
-                Rock2.Left = x;
+                Rock2pb.Top = y;
+                Rock2pb.Left = x;
             }
-            if (Rock3.Top > Border.Height)
+            if (Rock3pb.Top > Border.Height)
             {
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock3.Top = y;
-                Rock3.Left = x;
+                Rock3pb.Top = y;
+                Rock3pb.Left = x;
             }
-            if (Rock4.Top > Border.Height)
+            if (Rock4pb.Top > Border.Height)
             {
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock4.Top = y;
-                Rock4.Left = x;
+                Rock4pb.Top = y;
+                Rock4pb.Left = x;
             }
-            if (Rock5.Top > Border.Height)
+            if (Rock5pb.Top > Border.Height)
             {
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock5.Top = y;
-                Rock5.Left = x;
+                Rock5pb.Top = y;
+                Rock5pb.Left = x;
             }
-            if (Rock6.Top > Border.Height)
+            if (Rock6pb.Top > Border.Height)
             {
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock6.Top = y;
-                Rock6.Left = x;
+                Rock6pb.Top = y;
+                Rock6pb.Left = x;
             }
             if (Waka.Left < 0) Waka.Left = 0;
             if (Waka.Left > Border.Width) Waka.Left = Border.Width;
             if (Waka.Top < 0) Waka.Top = 0;
-            if (Waka.Top > Border.Height) Waka.Top = Border.Height;
+            if (Waka.Top  > Border.Height - Waka.Height) Waka.Top = Border.Height - Waka.Height;
         }
         
         private void Rando(int lx, int rx, int ly, int ry)
@@ -158,12 +175,12 @@ namespace Major_Project___Inspire_Further_Research
 
         private void RockMove()
         {
-            Rock1.Top += RockS;
-            Rock2.Top += RockS;
-            Rock3.Top += RockS;
-            Rock4.Top += RockS;
-            Rock5.Top += RockS;
-            Rock6.Top += RockS;
+            Rock1pb.Top += RockS;
+            Rock2pb.Top += RockS;
+            Rock3pb.Top += RockS;
+            Rock4pb.Top += RockS;
+            Rock5pb.Top += RockS;
+            Rock6pb.Top += RockS;
 
         }
 
@@ -206,52 +223,52 @@ namespace Major_Project___Inspire_Further_Research
 
         private void RockCol() // Checks each rock. And Minus' a life and removes the rocks, then moves waka back 10.
         {
-            if (Waka.Left + 10 + (Waka.Width) >= Rock1.Left && Waka.Left + 10 <= (Rock1.Left + Rock1.Width) && Rock1.Top + Rock1.Height >= Waka.Top && Rock1.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left + 10 + (Waka.Width) >= Rock1pb.Left && Waka.Left + 10 <= (Rock1pb.Left + Rock1pb.Width) && Rock1pb.Top + Rock1pb.Height >= Waka.Top && Rock1pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock1.Top = y;
-                Rock1.Left = x;
+                Rock1pb.Top = y;
+                Rock1pb.Left = x;
                 Collided();
             } // rock 1
-            if (Waka.Left - 10 +  Waka.Width >= Rock2.Left && Waka.Left + 10 <= (Rock2.Left + Rock4.Width) && Rock2.Top + Rock2.Height >= Waka.Top && Rock2.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left - 10 +  Waka.Width >= Rock2pb.Left && Waka.Left + 10 <= (Rock2pb.Left + Rock4pb.Width) && Rock2pb.Top + Rock2pb.Height >= Waka.Top && Rock2pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock2.Top = y;
-                Rock2.Left = x;
+                Rock2pb.Top = y;
+                Rock2pb.Left = x;
                 Collided();
             } // Rock 2
-            if (Waka.Left - 10 + Waka.Width >= Rock4.Left && Waka.Left +10 <= (Rock4.Left + Rock4.Width) && Rock4.Top + Rock4.Height >= Waka.Top && Rock4.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left - 10 + Waka.Width >= Rock4pb.Left && Waka.Left +10 <= (Rock4pb.Left + Rock4pb.Width) && Rock4pb.Top + Rock4pb.Height >= Waka.Top && Rock4pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock4.Top = y;
-                Rock4.Left = x;
+                Rock4pb.Top = y;
+                Rock4pb.Left = x;
                 Collided();
             } //Rock Smallrock
-            if (Waka.Left -10 + Waka.Width >= Rock3.Left && Waka.Left +10<= (Rock3.Left + Rock3.Width) && Rock3.Top + Rock3.Height >= Waka.Top && Rock3.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left -10 + Waka.Width >= Rock3pb.Left && Waka.Left +10<= (Rock3pb.Left + Rock3pb.Width) && Rock3pb.Top + Rock3pb.Height >= Waka.Top && Rock3pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock3.Top = y;
-                Rock3.Left = x;
+                Rock3pb.Top = y;
+                Rock3pb.Left = x;
                 Collided();
             } //Rock 3
-            if (Waka.Left + Waka.Width -10>= Rock5.Left && Waka.Left+10 <= (Rock5.Left + Rock5.Width) && Rock5.Top + Rock5.Height >= Waka.Top && Rock5.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left + Waka.Width -10>= Rock5pb.Left && Waka.Left+10 <= (Rock5pb.Left + Rock5pb.Width) && Rock5pb.Top + Rock5pb.Height >= Waka.Top && Rock5pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock5.Top = y;
-                Rock5.Left = x;
+                Rock5pb.Top = y;
+                Rock5pb.Left = x;
                 Collided();
             } // BigRcok
-            if (Waka.Left + Waka.Width -10>= Rock6.Left && Waka.Left +10<= (Rock6.Left + Rock6.Width) && Rock6.Top + Rock6.Height >= Waka.Top && Rock6.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left + Waka.Width -10>= Rock6pb.Left && Waka.Left +10<= (Rock6pb.Left + Rock6pb.Width) && Rock6pb.Top + Rock6pb.Height >= Waka.Top && Rock6pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
-                Rock6.Top = y;
-                Rock6.Left = x;
+                Rock6pb.Top = y;
+                Rock6pb.Left = x;
                 Collided();
             } //Super Big Rock
         }

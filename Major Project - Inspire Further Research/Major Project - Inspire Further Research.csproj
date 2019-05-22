@@ -99,6 +99,7 @@
     <None Include="Resources\CropRock.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\BrokenOarFlip.bmp" />
     <Content Include="Resources\BrokenOarFlip.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

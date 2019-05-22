@@ -73,6 +73,16 @@ namespace Major_Project___Inspire_Further_Research.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BrokenOarFlip {
+            get {
+                object obj = ResourceManager.GetObject("BrokenOarFlip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CropRock {
             get {
                 object obj = ResourceManager.GetObject("CropRock", resourceCulture);
