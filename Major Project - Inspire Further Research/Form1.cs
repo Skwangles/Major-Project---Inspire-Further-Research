@@ -49,7 +49,7 @@ namespace Major_Project___Inspire_Further_Research
                     RockS = 6;
                     WakaS = 4;
 
-                    totaldistance = 1000;
+                    totaldistance = 1000; //Is made small to test end animation quickly.
                     break;
                 case "2":
                     RockS = 8;
