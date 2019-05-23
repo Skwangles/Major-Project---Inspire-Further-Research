@@ -99,6 +99,7 @@
     <None Include="Resources\CropRock.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WakaThin.png" />
     <None Include="Resources\BrokenOarFlip.bmp" />
     <Content Include="Resources\BrokenOarFlip.png" />
   </ItemGroup>

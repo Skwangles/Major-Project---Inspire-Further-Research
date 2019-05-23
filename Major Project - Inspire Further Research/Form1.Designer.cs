@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Border = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.LifeBar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Life1 = new System.Windows.Forms.PictureBox();
             this.Waka = new System.Windows.Forms.PictureBox();
@@ -47,8 +47,12 @@
             this.OOLlbl = new System.Windows.Forms.Label();
             this.oars = new System.Windows.Forms.ImageList(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.NZLand = new System.Windows.Forms.PictureBox();
+            this.HawkiLand = new System.Windows.Forms.PictureBox();
+            this.EndTimer = new System.Windows.Forms.Timer(this.components);
+            this.GIFTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Border)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LifeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Waka)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock6pb)).BeginInit();
@@ -59,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Rock5pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NZLand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HawkiLand)).BeginInit();
             this.SuspendLayout();
             // 
             // Border
@@ -70,14 +76,14 @@
             this.Border.TabIndex = 0;
             this.Border.TabStop = false;
             // 
-            // pictureBox2
+            // LifeBar
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Beige;
-            this.pictureBox2.Location = new System.Drawing.Point(443, -1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(47, 548);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.LifeBar.BackColor = System.Drawing.Color.Beige;
+            this.LifeBar.Location = new System.Drawing.Point(443, -1);
+            this.LifeBar.Name = "LifeBar";
+            this.LifeBar.Size = new System.Drawing.Size(47, 548);
+            this.LifeBar.TabIndex = 1;
+            this.LifeBar.TabStop = false;
             // 
             // label1
             // 
@@ -103,11 +109,11 @@
             // Waka
             // 
             this.Waka.BackColor = System.Drawing.Color.Transparent;
-            this.Waka.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Waka.BackgroundImage")));
+            this.Waka.BackgroundImage = global::Major_Project___Inspire_Further_Research.Properties.Resources.WakaThin;
             this.Waka.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Waka.Location = new System.Drawing.Point(181, 394);
+            this.Waka.Location = new System.Drawing.Point(188, 317);
             this.Waka.Name = "Waka";
-            this.Waka.Size = new System.Drawing.Size(75, 99);
+            this.Waka.Size = new System.Drawing.Size(61, 124);
             this.Waka.TabIndex = 6;
             this.Waka.TabStop = false;
             // 
@@ -225,11 +231,32 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(-2, 523);
+            this.progressBar1.Location = new System.Drawing.Point(-2, 524);
             this.progressBar1.Maximum = 10000;
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(492, 23);
+            this.progressBar1.Size = new System.Drawing.Size(482, 23);
             this.progressBar1.TabIndex = 17;
+            // 
+            // NZLand
+            // 
+            this.NZLand.BackColor = System.Drawing.Color.SandyBrown;
+            this.NZLand.Location = new System.Drawing.Point(-2, -566);
+            this.NZLand.Name = "NZLand";
+            this.NZLand.Size = new System.Drawing.Size(447, 559);
+            this.NZLand.TabIndex = 18;
+            this.NZLand.TabStop = false;
+            // 
+            // HawkiLand
+            // 
+            this.HawkiLand.Location = new System.Drawing.Point(-2, 534);
+            this.HawkiLand.Name = "HawkiLand";
+            this.HawkiLand.Size = new System.Drawing.Size(447, 188);
+            this.HawkiLand.TabIndex = 19;
+            this.HawkiLand.TabStop = false;
+            // 
+            // EndTimer
+            // 
+            this.EndTimer.Tick += new System.EventHandler(this.EndTimer_Tick);
             // 
             // Form1
             // 
@@ -238,14 +265,16 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(484, 540);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.Waka);
+            this.Controls.Add(this.NZLand);
             this.Controls.Add(this.OOLlbl);
+            this.Controls.Add(this.HawkiLand);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Life1);
             this.Controls.Add(this.Life2);
             this.Controls.Add(this.Life3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.Waka);
+            this.Controls.Add(this.LifeBar);
             this.Controls.Add(this.Rock5pb);
             this.Controls.Add(this.Rock1pb);
             this.Controls.Add(this.Rock2pb);
@@ -260,7 +289,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.Border)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LifeBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Waka)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rock6pb)).EndInit();
@@ -271,6 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Rock5pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NZLand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HawkiLand)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,7 +310,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox Border;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox LifeBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox Life1;
         private System.Windows.Forms.PictureBox Waka;
@@ -295,6 +326,10 @@
         private System.Windows.Forms.Label OOLlbl;
         private System.Windows.Forms.ImageList oars;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.PictureBox NZLand;
+        private System.Windows.Forms.PictureBox HawkiLand;
+        private System.Windows.Forms.Timer EndTimer;
+        private System.Windows.Forms.Timer GIFTimer;
     }
 }
 

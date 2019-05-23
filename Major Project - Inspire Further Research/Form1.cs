@@ -12,15 +12,17 @@ namespace Major_Project___Inspire_Further_Research
 {
     public partial class Form1 : Form
     {
-       
+
         Random rand = new Random();
         int x;
         int y;
+        int a = 0;
         bool LeftK;
         bool RightK;
         bool Up;
         bool Down;
-        int i = 0;       
+        int ShrinkBox = 15;
+        int i = 0;
         int distance;
         int totaldistance;
         bool Collide = false;
@@ -30,36 +32,36 @@ namespace Major_Project___Inspire_Further_Research
         Bitmap UnBrokenOar = (Bitmap)Properties.Resources._15DegOar;
         Bitmap SnappedOar = (Bitmap)Properties.Resources.BrokenOarFlip;
 
-    
-    public Form1()
+
+        public Form1()
         {
             InitializeComponent();
-        }       
-     
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
             string Hardness = Opening.Hardness;
-            
+
             switch (Hardness)
             {
                 case "1": //Based on difficulty. Changes rock speed
-                    RockS = 4;
+                    RockS = 6;
                     WakaS = 4;
-                    
-                    totaldistance = 10000;
+
+                    totaldistance = 1000;
                     break;
                 case "2":
-                    RockS = 6;
+                    RockS = 8;
                     WakaS = 6;
-                   
-                    totaldistance = 15000;
+
+                    totaldistance = 12500;
                     break;
                 case "3":
-                    RockS = 8;
+                    RockS = 10;
                     WakaS = 8;
-                   
-                    totaldistance= 20000;
+
+                    totaldistance = 15000;
                     break;
                 default:
                     break;
@@ -71,6 +73,8 @@ namespace Major_Project___Inspire_Further_Research
 
         private void Reset()
         { //resets game. For another play
+            HideShowRocks("S");
+            NZLand.Location = new Point(-2, -556);
             OOLlbl.Hide();
             progressBar1.Value = 0;
             Life1.BackgroundImage = UnBrokenOar;
@@ -109,19 +113,52 @@ namespace Major_Project___Inspire_Further_Research
             MoveWaka(); //Moves Waka
             RockMove();//Moves rocks.
             CheckCollision(); //checks collision
-            
-            
+
+
             if (distance > totaldistance)
             {
                 MoveTimer.Stop();
                 OOLlbl.Text = "The voyage to New Zealand" + Environment.NewLine + " is complete.";
                 OOLlbl.Show();
                 distance = 0;
+                EndAnimation();
             }
             progressBar1.Value = distance;
 
         }
-         
+
+        protected void EndAnimation()
+        {
+
+            EndTimer.Start();
+            HideShowRocks("H");
+
+
+
+        }
+
+        private void HideShowRocks(string s)
+        {
+            switch (s) {
+                case "H":
+                    Rock1pb.Hide();
+                    Rock2pb.Hide();
+                    Rock3pb.Hide();
+                    Rock4pb.Hide();
+                    Rock5pb.Hide();
+                    Rock6pb.Hide();
+                    break;
+                case "S":
+                    Rock1pb.Show();
+                    Rock2pb.Show();
+                    Rock3pb.Show();
+                    Rock4pb.Show();
+                    Rock5pb.Show();
+                    Rock6pb.Show();
+                    break;
+
+            }
+        }
         private void Bound()
         {            
             if (Rock1pb.Top > Border.Height)
@@ -161,7 +198,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock6pb.Left = x;
             }
             if (Waka.Left < 0) Waka.Left = 0;
-            if (Waka.Left > Border.Width) Waka.Left = Border.Width;
+            if (Waka.Left > Border.Width - Waka.Width) Waka.Left = Border.Width - Waka.Width;
             if (Waka.Top < 0) Waka.Top = 0;
             if (Waka.Top  > Border.Height - Waka.Height) Waka.Top = Border.Height - Waka.Height;
         }
@@ -223,7 +260,7 @@ namespace Major_Project___Inspire_Further_Research
 
         private void RockCol() // Checks each rock. And Minus' a life and removes the rocks, then moves waka back 10.
         {
-            if (Waka.Left + 10 + (Waka.Width) >= Rock1pb.Left && Waka.Left + 10 <= (Rock1pb.Left + Rock1pb.Width) && Rock1pb.Top + Rock1pb.Height >= Waka.Top && Rock1pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left  + (Waka.Width) >= Rock1pb.Left && Waka.Left <= (Rock1pb.Left + Rock1pb.Width) && Rock1pb.Top + Rock1pb.Height >= Waka.Top && Rock1pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -231,7 +268,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock1pb.Left = x;
                 Collided();
             } // rock 1
-            if (Waka.Left - 10 +  Waka.Width >= Rock2pb.Left && Waka.Left + 10 <= (Rock2pb.Left + Rock4pb.Width) && Rock2pb.Top + Rock2pb.Height >= Waka.Top && Rock2pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left  +  Waka.Width >= Rock2pb.Left && Waka.Left  <= (Rock2pb.Left + Rock4pb.Width) && Rock2pb.Top + Rock2pb.Height >= Waka.Top && Rock2pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -239,7 +276,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock2pb.Left = x;
                 Collided();
             } // Rock 2
-            if (Waka.Left - 10 + Waka.Width >= Rock4pb.Left && Waka.Left +10 <= (Rock4pb.Left + Rock4pb.Width) && Rock4pb.Top + Rock4pb.Height >= Waka.Top && Rock4pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left  + Waka.Width >= Rock4pb.Left && Waka.Left  <= (Rock4pb.Left + Rock4pb.Width) && Rock4pb.Top + Rock4pb.Height >= Waka.Top && Rock4pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -247,7 +284,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock4pb.Left = x;
                 Collided();
             } //Rock Smallrock
-            if (Waka.Left -10 + Waka.Width >= Rock3pb.Left && Waka.Left +10<= (Rock3pb.Left + Rock3pb.Width) && Rock3pb.Top + Rock3pb.Height >= Waka.Top && Rock3pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left  + Waka.Width >= Rock3pb.Left && Waka.Left  <= (Rock3pb.Left + Rock3pb.Width) && Rock3pb.Top + Rock3pb.Height >= Waka.Top && Rock3pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -255,7 +292,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock3pb.Left = x;
                 Collided();
             } //Rock 3
-            if (Waka.Left + Waka.Width -10>= Rock5pb.Left && Waka.Left+10 <= (Rock5pb.Left + Rock5pb.Width) && Rock5pb.Top + Rock5pb.Height >= Waka.Top && Rock5pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left + Waka.Width  >= Rock5pb.Left && Waka.Left <= (Rock5pb.Left + Rock5pb.Width) && Rock5pb.Top + Rock5pb.Height >= Waka.Top && Rock5pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -263,7 +300,7 @@ namespace Major_Project___Inspire_Further_Research
                 Rock5pb.Left = x;
                 Collided();
             } // BigRcok
-            if (Waka.Left + Waka.Width -10>= Rock6pb.Left && Waka.Left +10<= (Rock6pb.Left + Rock6pb.Width) && Rock6pb.Top + Rock6pb.Height >= Waka.Top && Rock6pb.Top <= Waka.Top + Waka.Height)
+            if (Waka.Left + Waka.Width >= Rock6pb.Left && Waka.Left  <= (Rock6pb.Left + Rock6pb.Width) && Rock6pb.Top + Rock6pb.Height >= Waka.Top && Rock6pb.Top <= Waka.Top + Waka.Height)
             {
                 Collide = true;
                 Rando(0, Border.Width, -(Border.Width), 0);
@@ -346,6 +383,22 @@ namespace Major_Project___Inspire_Further_Research
 
         private void Rock5_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void EndTimer_Tick(object sender, EventArgs e)
+        {
+
+            a++;
+            if (a < 100)
+            {
+                NZLand.Top+=5;
+            }
+            else
+            {
+                EndTimer.Stop();
+                //now change background to beige.
+            }
 
         }
     }

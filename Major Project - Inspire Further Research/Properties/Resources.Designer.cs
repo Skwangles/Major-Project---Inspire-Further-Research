@@ -99,5 +99,15 @@ namespace Major_Project___Inspire_Further_Research.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WakaThin {
+            get {
+                object obj = ResourceManager.GetObject("WakaThin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
